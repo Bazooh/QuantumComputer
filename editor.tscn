@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://bjhk4pijsots"]
+
+[ext_resource type="Script" path="res://editor.gd" id="1_ao6ap"]
+[ext_resource type="PackedScene" uid="uid://b6kcqj26jmg6v" path="res://GUI/gate_button.tscn" id="2_unigu"]
+[ext_resource type="Script" path="res://gates/CNOT.gd" id="3_auxkp"]
+[ext_resource type="Script" path="res://gates/H.gd" id="4_t0r0t"]
+[ext_resource type="Script" path="res://gates/X.gd" id="5_gy0wl"]
+[ext_resource type="Script" path="res://gates/Y.gd" id="6_nrkvv"]
+[ext_resource type="Script" path="res://gates/Z.gd" id="7_37jvr"]
+
+[node name="Editor" type="Node2D"]
+script = ExtResource("1_ao6ap")
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="ScrollContainer" type="ScrollContainer" parent="GUI"]
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 1.0
+anchor_right = 0.9
+anchor_bottom = 1.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+vertical_scroll_mode = 0
+
+[node name="GateSelection" type="HBoxContainer" parent="GUI/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="CNOT" parent="GUI/ScrollContainer/GateSelection" instance=ExtResource("2_unigu")]
+layout_mode = 2
+gate = ExtResource("3_auxkp")
+
+[node name="H" parent="GUI/ScrollContainer/GateSelection" instance=ExtResource("2_unigu")]
+layout_mode = 2
+gate = ExtResource("4_t0r0t")
+
+[node name="X" parent="GUI/ScrollContainer/GateSelection" instance=ExtResource("2_unigu")]
+layout_mode = 2
+gate = ExtResource("5_gy0wl")
+
+[node name="Y" parent="GUI/ScrollContainer/GateSelection" instance=ExtResource("2_unigu")]
+layout_mode = 2
+gate = ExtResource("6_nrkvv")
+
+[node name="Z" parent="GUI/ScrollContainer/GateSelection" instance=ExtResource("2_unigu")]
+layout_mode = 2
+gate = ExtResource("7_37jvr")
