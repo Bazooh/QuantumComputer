@@ -110,11 +110,26 @@ func is_equal_approx(other: Complex) -> bool:
 	return is_equal_approx(re, other.re) and is_equal_approx(im, other.im)
 
 
+static func new_random(length_: float = -1.0) -> Complex:
+	if length_ < 0:
+		length_ = randf()
+	
+	var angle: float = TAU * randf()
+
+	return Complex.new(length_* cos(angle), length_ * sin(angle))
+
+
 func _to_string() -> String:
+	var im_: float = roundf(im * 100.0) / 100.0
+	var re_: float = roundf(re * 100.0) / 100.0
+
 	if im == 0:
-		return str(re)
+		return str(re_)
 	
 	if re == 0:
-		return str(im) + "i"
+		return str(im_) + "i"
+	
+	if im_ < 0:
+		return str(re_) + " - " + str(-im_) + "i"
 
-	return str(re) + " + " + str(im) + "i"
+	return str(re_) + " + " + str(im_) + "i"

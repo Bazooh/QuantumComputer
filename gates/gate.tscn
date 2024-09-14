@@ -1,10 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://1xhlar1gw6mv"]
+[gd_scene load_steps=2 format=3 uid="uid://1xhlar1gw6mv"]
 
 [ext_resource type="Script" path="res://gates/gate.gd" id="1_0v85h"]
-[ext_resource type="Texture2D" uid="uid://d27jdqhtl42ga" path="res://icon.svg" id="2_xdlvv"]
 
-[node name="Gate" type="Node2D"]
+[node name="Gate" type="Node2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_0v85h")
+sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_xdlvv")
+scale = Vector2(0.2, 0.2)

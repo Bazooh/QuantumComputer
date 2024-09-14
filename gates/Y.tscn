@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://dv25rwfmkdaht"]
+
+[ext_resource type="PackedScene" uid="uid://1xhlar1gw6mv" path="res://gates/gate.tscn" id="1_lnbig"]
+[ext_resource type="Script" path="res://gates/Y.gd" id="2_j1yfx"]
+[ext_resource type="Texture2D" uid="uid://cgcqsk2ne3agn" path="res://art/gates.png" id="3_nqhnp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjnlm"]
+atlas = ExtResource("3_nqhnp")
+region = Rect2(570, 384, 440, 300)
+
+[node name="Y" instance=ExtResource("1_lnbig")]
+script = ExtResource("2_j1yfx")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = SubResource("AtlasTexture_hjnlm")

@@ -5,7 +5,8 @@ enum Type {
     Zero,
     One,
     Plus,
-    Minus
+    Minus,
+    Random,
 }
 
 const INV_SQRT2 := 1 / sqrt(2)
@@ -24,6 +25,13 @@ func observe() -> bool:
     return state.observe(self)
 
 
+static func new_random() -> Qubit:
+    var length_alpha: float = sqrt(randf())
+    var alpha := Complex.new_random(length_alpha)
+    var beta := Complex.new_random(sqrt(1 - length_alpha * length_alpha))
+    return Qubit.new(alpha, beta)
+
+
 static func from_type(type: Type) -> Qubit:
     match type:
         Type.Zero:
@@ -34,6 +42,8 @@ static func from_type(type: Type) -> Qubit:
             return Qubit.new(Complex.new(INV_SQRT2, 0), Complex.new(INV_SQRT2, 0))
         Type.Minus:
             return Qubit.new(Complex.new(INV_SQRT2, 0), Complex.new(-INV_SQRT2, 0))
+        Type.Random:
+            return new_random()
         _:
             assert(false, "Invalid qubit type: " + str(type))
             return Qubit.new(Complex.new(0, 0), Complex.new(0, 0))

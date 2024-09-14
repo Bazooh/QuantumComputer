@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8q2wx6xdidg1"]
+
+[ext_resource type="Texture2D" uid="uid://347y5bwxd2cn" path="res://art/CNOT_extension.tres" id="1_24wn1"]
+
+[node name="Extension" type="Sprite2D"]
+position = Vector2(0, -261)
+texture = ExtResource("1_24wn1")

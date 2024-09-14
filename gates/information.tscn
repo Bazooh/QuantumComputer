@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://dqtspohvuox6l"]
+
+[ext_resource type="PackedScene" uid="uid://1xhlar1gw6mv" path="res://gates/gate.tscn" id="1_q4axw"]
+[ext_resource type="Script" path="res://gates/information.gd" id="2_7oxnp"]
+[ext_resource type="Texture2D" uid="uid://cgcqsk2ne3agn" path="res://art/gates.png" id="3_au1no"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdvss"]
+atlas = ExtResource("3_au1no")
+region = Rect2(2162, 774, 618, 300)
+
+[sub_resource type="LabelSettings" id="LabelSettings_21173"]
+font_size = 70
+font_color = Color(0, 0, 0, 1)
+
+[node name="Information" node_paths=PackedStringArray("alpha", "beta") instance=ExtResource("1_q4axw")]
+script = ExtResource("2_7oxnp")
+alpha = NodePath("Sprite2D/Alpha")
+beta = NodePath("Sprite2D/Beta")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = SubResource("AtlasTexture_mdvss")
+
+[node name="Alpha" type="Label" parent="Sprite2D" index="0"]
+offset_left = -265.0
+offset_top = -115.0
+offset_right = 145.0
+offset_bottom = -15.0
+text = "-0.12 + 0.78i"
+label_settings = SubResource("LabelSettings_21173")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Beta" type="Label" parent="Sprite2D" index="1"]
+offset_left = -265.0
+offset_top = 9.99998
+offset_right = 145.0
+offset_bottom = 110.0
+text = "0.45 - 0.91i"
+label_settings = SubResource("LabelSettings_21173")
+horizontal_alignment = 1
+vertical_alignment = 1
