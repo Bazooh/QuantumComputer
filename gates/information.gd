@@ -6,7 +6,7 @@ class_name Information extends OneGate
 
 
 static func get_gate_scene() -> PackedScene:
-	return load("res://gates/Information.tscn")
+	return load("res://nodes/Information.tscn")
 
 
 func _apply() -> void:
@@ -15,5 +15,5 @@ func _apply() -> void:
 		beta.text = "..."
 		return
 	
-	alpha.text = qubit.state.amplitudes[0].to_string()
-	beta.text = qubit.state.amplitudes[1].to_string()
+	alpha.text = qubit.state.amplitudes.tensor[0].to_string()
+	beta.text = qubit.state.amplitudes.tensor[1].to_string()

@@ -9,7 +9,7 @@ var qubit: Qubit:
 
 
 static func get_gate_scene() -> PackedScene:
-	return load("res://gates/Observer.tscn")
+	return load("res://nodes/Observer.tscn")
 
 
 func _apply() -> void:
@@ -29,6 +29,9 @@ func has_observed() -> bool:
 
 
 func _input(event: InputEvent) -> void:
+	if editor == null:
+		editor = get_tree().current_scene
+
 	if click_inside(event) and editor.can_edit():
 		editor.linking_wire = true
 		editor.placable = self

@@ -6,7 +6,7 @@ class_name Gate extends Placable
 
 static func get_gate_scene() -> PackedScene:
 	assert(false, "get_gate_scene must be overridden")
-	return load("res://gates/gate.tscn")
+	return load("res://nodes/gate.tscn")
 
 
 func _apply() -> void:
@@ -29,20 +29,30 @@ func can_be_applied() -> bool:
 
 
 func can_be_placed(pos: Vector2i) -> bool:
-	if not editor.qubit_lines_pos.has(pos.y):
+	if not editor.computer.qubit_lines_pos.has(pos.y):
 		return false
 	
-	if editor.qubit_lines_pos[pos.y] >= pos.x:
+	if editor.computer.qubit_lines_pos[pos.y] >= pos.x:
 		return false
 
-	return not editor.grid.has(pos)
+	return not editor.computer.grid.has(pos)
 
 
 func place_on_grid(pos: Vector2i) -> void:
-	editor.grid[pos] = self
+	editor.computer.grid[pos] = self
 
-	var qubit_line: QubitLine = editor.get_qubit_line(pos.y)
+	var qubit_line: QubitLine = editor.computer.get_qubit_line(pos.y)
 
 	qubit_lines.append(qubit_line)
 	var idx: int = qubit_line.gates.map(func(gate: Gate): return gate.grid_pos.x).bsearch(pos.x)
 	qubit_line.gates.insert(idx, self)
+
+
+func unplace(pos: Vector2i) -> void:
+	if editor == null:
+		editor = get_tree().current_scene
+
+	editor.computer.grid.erase(pos)
+	editor.computer.get_qubit_line(pos.y).gates.erase(self)
+
+	super.unplace(pos)

@@ -13,22 +13,18 @@ const types_sprite: Array[AtlasTexture] = [
 var type: Qubit.Type:
 	set(value):
 		type = value
-		qubit = Qubit.from_type(type)
+		qubit.reset_from_type(type)
 		sprite.texture = types_sprite[type]
 		
 
-var qubit: Qubit
+var qubit := Qubit.from_type(type)
 
-var gates: Array[Gate]
+@export var gates: Array[Gate]
 var current_gate_idx: int = 0
 
 var is_waiting: bool = false
 var is_active: bool:
 	get: return current_gate_idx < gates.size()
-
-
-func _ready() -> void:
-	qubit = Qubit.from_type(type)
 
 
 func get_waiting_gate() -> Gate:
@@ -49,15 +45,27 @@ func active_next_gate() -> void:
 
 
 func can_be_placed(pos: Vector2i) -> bool:
-	return not editor.qubit_lines_pos.has(pos.y)
+	return not editor.computer.qubit_lines_pos.has(pos.y)
 
 
 func place_on_grid(pos: Vector2i) -> void:
-	editor.qubit_lines_pos[pos.y] = pos.x
-	editor.grid[pos] = self
+	editor.computer.qubit_lines_pos[pos.y] = pos.x
+	editor.computer.grid[pos] = self
+	editor.computer.qubit_lines.append(self)
+
+
+func unplace(pos: Vector2i) -> void:
+	editor.computer.qubit_lines_pos.erase(pos.y)
+	editor.computer.grid.erase(pos)
+	editor.computer.qubit_lines.erase(self)
+
+	super.unplace(pos)
 
 
 func _input(event: InputEvent) -> void:
+	if editor == null:
+		editor = get_tree().current_scene
+
 	if not ghost and click_inside(event) and editor.can_edit():
 		type = (type + 1) % Qubit.Type.size() as Qubit.Type
 	

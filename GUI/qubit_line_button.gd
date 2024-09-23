@@ -12,7 +12,8 @@ func _on_pressed() -> void:
 		return
 
 	var instance: QubitLine = qubit_line_scene.instantiate()
-	editor.computer.qubit_lines.add_child(instance)
+	editor.computer.qubit_lines_scene.add_child(instance)
+	instance.owner = editor.computer
 	instance.init_ghost(editor, get_viewport().get_mouse_position())
 	editor.placing_placable = true
 	editor.placable = instance

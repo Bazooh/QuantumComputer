@@ -15,6 +15,13 @@ func can_be_applied() -> bool:
 	return super.can_be_applied() and (condition == null or condition.has_observed())
 
 
+func unplace(pos: Vector2i) -> void:
+	if condition != null:
+		condition.gates.erase(self)
+	
+	super.unplace(pos)
+
+
 func _apply() -> void:
 	if condition != null and not condition.result:
 		return

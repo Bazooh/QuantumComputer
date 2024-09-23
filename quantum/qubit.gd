@@ -18,35 +18,46 @@ var idx: int = 0
 
 func _init(alpha_: Complex, beta_: Complex) -> void:
     state.qubits = [self]
-    state.amplitudes = [alpha_, beta_]
+    state.amplitudes = Tensor.new([alpha_, beta_])
 
 
 func observe() -> bool:
     return state.observe(self)
 
 
-static func new_random() -> Qubit:
+func reset_from_type(type: Type) -> void:
+    idx = 0
+    state = State.new()
+    state.qubits = [self]
+    state.amplitudes = Tensor.new(get_amplitude_from_type(type))
+
+
+static func get_random_amplitude() -> Array[Complex]:
     var length_alpha: float = sqrt(randf())
     var alpha := Complex.new_random(length_alpha)
     var beta := Complex.new_random(sqrt(1 - length_alpha * length_alpha))
-    return Qubit.new(alpha, beta)
+    return [alpha, beta]
+
+
+static func get_amplitude_from_type(type: Type) -> Array[Complex]:
+    match type:
+        Type.Zero:
+            return [Complex.new(1, 0), Complex.new(0, 0)]
+        Type.One:
+            return [Complex.new(0, 0), Complex.new(1, 0)]
+        Type.Plus:
+            return [Complex.new(INV_SQRT2, 0), Complex.new(INV_SQRT2, 0)]
+        Type.Minus:
+            return [Complex.new(INV_SQRT2, 0), Complex.new(-INV_SQRT2, 0)]
+        Type.Random:
+            return get_random_amplitude()
+        _:
+            assert(false, "Invalid qubit type: " + str(type))
+            return [Complex.new(0, 0), Complex.new(0, 0)]
 
 
 static func from_type(type: Type) -> Qubit:
-    match type:
-        Type.Zero:
-            return Qubit.new(Complex.new(1, 0), Complex.new(0, 0))
-        Type.One:
-            return Qubit.new(Complex.new(0, 0), Complex.new(1, 0))
-        Type.Plus:
-            return Qubit.new(Complex.new(INV_SQRT2, 0), Complex.new(INV_SQRT2, 0))
-        Type.Minus:
-            return Qubit.new(Complex.new(INV_SQRT2, 0), Complex.new(-INV_SQRT2, 0))
-        Type.Random:
-            return new_random()
-        _:
-            assert(false, "Invalid qubit type: " + str(type))
-            return Qubit.new(Complex.new(0, 0), Complex.new(0, 0))
+    return Qubit.new.callv(get_amplitude_from_type(type))
 
 
 func _to_string() -> String:

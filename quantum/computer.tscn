@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://ycrnc43cinhi"]
+
+[ext_resource type="Script" path="res://quantum/computer.gd" id="1_0254n"]
+
+[node name="Computer" type="Node2D" node_paths=PackedStringArray("qubit_lines_scene", "gates_scene")]
+script = ExtResource("1_0254n")
+qubit_lines_scene = NodePath("QubitLines")
+gates_scene = NodePath("Gates")
+
+[node name="Gates" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="QubitLines" type="Node2D" parent="."]
+unique_name_in_owner = true

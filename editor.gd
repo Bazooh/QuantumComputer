@@ -1,11 +1,10 @@
 class_name Editor extends Node2D
 
 
+const choose_file_name_scene: PackedScene = preload("res://GUI/choose_file_name.tscn")
+const gate_button_scene: PackedScene = preload("res://GUI/gate_button.tscn")
+
 @export var computer: Computer
-
-var grid := {} # {Vector2i: Placable}
-
-var qubit_lines_pos := {} # {x: y}
 
 
 var placable: Placable
@@ -18,20 +17,23 @@ func can_edit() -> bool:
 
 
 func _ready() -> void:
-	pass
+	for file: String in DirAccess.get_files_at("res://components"):
+		var gate_button: GateButton = gate_button_scene.instantiate()
 
+		gate_button.gate_name = file
+		gate_button.create_gate = Component.create_from_computer.bind(load("res://components/" + file))
+		gate_button.editor = self
 
-func get_qubit_line(height: int) -> QubitLine:
-	return grid[Vector2i(qubit_lines_pos[height], height)]
-
-
-func add_qubit_line(grid_pos: Vector2i) -> void:
-	var qubit_line := QubitLine.new()
-
-	grid[grid_pos] = qubit_line
-	qubit_lines_pos[grid_pos.y] = grid_pos.x
+		%Gates.add_child(gate_button)
 
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("compute"):
+		computer.reset()
 		computer.compute()
+	
+	if event.is_action_pressed("save"):
+		var choose_file_name: Control = choose_file_name_scene.instantiate()
+		add_child(choose_file_name)
+		choose_file_name.get_node("%Confirm").pressed.connect(func(): computer.save(choose_file_name.get_node("%FileName").text); choose_file_name.queue_free())
+		choose_file_name.get_node("%Cancel").pressed.connect(func(): choose_file_name.queue_free())

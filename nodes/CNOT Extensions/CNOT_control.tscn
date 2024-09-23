@@ -1,7 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://cjegj2mvnttev"]
+[gd_scene load_steps=3 format=3 uid="uid://cjegj2mvnttev"]
 
 [ext_resource type="Texture2D" uid="uid://dt1lswhd37vmo" path="res://art/CNOT_control.tres" id="1_nrego"]
+[ext_resource type="Script" path="res://nodes/CNOT Extensions/cnot_control.gd" id="2_yys6d"]
 
 [node name="Control" type="Sprite2D"]
 position = Vector2(0, -250)
 texture = ExtResource("1_nrego")
+script = ExtResource("2_yys6d")

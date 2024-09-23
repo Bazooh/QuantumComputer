@@ -1,0 +1,405 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="Script" path="res://quantum/computer.gd" id="1_rymx2"]
+[ext_resource type="PackedScene" path="res://nodes/CNOT.tscn" id="2_2dwi3"]
+[ext_resource type="PackedScene" path="res://nodes/qubit_line.tscn" id="2_8kemr"]
+[ext_resource type="Script" path="res://gates/CNOT.gd" id="3_jqcmc"]
+[ext_resource type="PackedScene" path="res://nodes/H.tscn" id="4_i0qxr"]
+[ext_resource type="Script" path="res://gates/H.gd" id="5_hqajl"]
+[ext_resource type="PackedScene" path="res://nodes/Observer.tscn" id="6_1d1jh"]
+[ext_resource type="Script" path="res://gates/qubit_line.gd" id="7_iuk3t"]
+[ext_resource type="Script" path="res://gates/observer.gd" id="7_jlyrw"]
+[ext_resource type="PackedScene" path="res://nodes/Information.tscn" id="8_fltjv"]
+[ext_resource type="Script" path="res://gates/information.gd" id="9_qyy82"]
+
+[node name="_Node2D_3" type="Node2D" node_paths=PackedStringArray("qubit_lines_scene", "gates_scene", "qubit_lines")]
+position = Vector2(-521.281, -194.399)
+script = ExtResource("1_rymx2")
+qubit_lines_scene = NodePath("QubitLines")
+gates_scene = NodePath("Gates")
+qubit_lines = [NodePath("QubitLines/QubitLine"), NodePath("QubitLines/@Node2D@2"), NodePath("QubitLines/_Node2D_3"), NodePath("QubitLines/_Node2D_4"), NodePath("QubitLines/@Node2D@5"), NodePath("QubitLines/@Node2D@6"), NodePath("QubitLines/@Node2D@7"), NodePath("QubitLines/@Node2D@8"), NodePath("QubitLines/@Node2D@9"), NodePath("QubitLines/@Node2D@10"), NodePath("QubitLines/@Node2D@11"), NodePath("QubitLines/@Node2D@12"), NodePath("QubitLines/@Node2D@13")]
+qubit_lines_pos = {
+0: 5,
+1: 5,
+2: 5,
+3: 5,
+4: 5,
+5: 5,
+6: 5,
+7: 5,
+8: 5,
+9: 5,
+10: 5,
+11: 5,
+12: 5
+}
+
+[node name="Gates" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CNOT" type="Node2D" parent="Gates" node_paths=PackedStringArray("qubit_lines", "sprite") instance=ExtResource("2_2dwi3")]
+position = Vector2(384, 512)
+script = ExtResource("3_jqcmc")
+conditions = Array[Dictionary]([{
+"height": 2,
+"inverted": false,
+"line_idx": 3
+}, {
+"height": 3,
+"inverted": false,
+"line_idx": 4
+}, {
+"height": -8,
+"inverted": false,
+"line_idx": 11
+}])
+qubit_lines = [NodePath("../../QubitLines/@Node2D@9"), NodePath("../../QubitLines/@Node2D@8"), NodePath("../../QubitLines/@Node2D@10"), NodePath("../../QubitLines/@Node2D@11"), NodePath("../../QubitLines/@Node2D@12"), NodePath("../../QubitLines/@Node2D@7"), NodePath("../../QubitLines/@Node2D@6"), NodePath("../../QubitLines/@Node2D@5"), NodePath("../../QubitLines/_Node2D_4"), NodePath("../../QubitLines/_Node2D_3"), NodePath("../../QubitLines/@Node2D@2"), NodePath("../../QubitLines/QubitLine")]
+sprite = NodePath("Sprite2D")
+
+[node name="@Node2D@127" type="Node2D" parent="Gates" node_paths=PackedStringArray("qubit_lines", "sprite") instance=ExtResource("2_2dwi3")]
+position = Vector2(448, 576)
+script = ExtResource("3_jqcmc")
+conditions = Array[Dictionary]([{
+"height": 1,
+"inverted": false,
+"line_idx": 2
+}, {
+"height": 2,
+"inverted": false,
+"line_idx": 3
+}, {
+"height": -8,
+"inverted": false,
+"line_idx": 10
+}])
+qubit_lines = [NodePath("../../QubitLines/@Node2D@10"), NodePath("../../QubitLines/@Node2D@9"), NodePath("../../QubitLines/@Node2D@11"), NodePath("../../QubitLines/@Node2D@12"), NodePath("../../QubitLines/@Node2D@8"), NodePath("../../QubitLines/@Node2D@7"), NodePath("../../QubitLines/@Node2D@6"), NodePath("../../QubitLines/@Node2D@5"), NodePath("../../QubitLines/_Node2D_4"), NodePath("../../QubitLines/_Node2D_3"), NodePath("../../QubitLines/@Node2D@2")]
+sprite = NodePath("Sprite2D")
+
+[node name="@Node2D@228" type="Node2D" parent="Gates" node_paths=PackedStringArray("qubit_lines", "sprite") instance=ExtResource("2_2dwi3")]
+position = Vector2(512, 512)
+script = ExtResource("3_jqcmc")
+conditions = Array[Dictionary]([{
+"height": 2,
+"inverted": true,
+"line_idx": 3
+}, {
+"height": 3,
+"inverted": false,
+"line_idx": 4
+}, {
+"height": -6,
+"inverted": false,
+"line_idx": 9
+}])
+qubit_lines = [NodePath("../../QubitLines/@Node2D@9"), NodePath("../../QubitLines/@Node2D@8"), NodePath("../../QubitLines/@Node2D@10"), NodePath("../../QubitLines/@Node2D@11"), NodePath("../../QubitLines/@Node2D@12"), NodePath("../../QubitLines/@Node2D@7"), NodePath("../../QubitLines/@Node2D@6"), NodePath("../../QubitLines/@Node2D@5"), NodePath("../../QubitLines/_Node2D_4"), NodePath("../../QubitLines/_Node2D_3")]
+sprite = NodePath("Sprite2D")
+
+[node name="@Node2D@311" type="Node2D" parent="Gates" node_paths=PackedStringArray("qubit_lines", "sprite") instance=ExtResource("2_2dwi3")]
+position = Vector2(576, 576)
+script = ExtResource("3_jqcmc")
+conditions = Array[Dictionary]([{
+"height": 1,
+"inverted": true,
+"line_idx": 2
+}, {
+"height": 2,
+"inverted": false,
+"line_idx": 3
+}, {
+"height": -6,
+"inverted": false,
+"line_idx": 8
+}])
+qubit_lines = [NodePath("../../QubitLines/@Node2D@10"), NodePath("../../QubitLines/@Node2D@9"), NodePath("../../QubitLines/@Node2D@11"), NodePath("../../QubitLines/@Node2D@12"), NodePath("../../QubitLines/@Node2D@8"), NodePath("../../QubitLines/@Node2D@7"), NodePath("../../QubitLines/@Node2D@6"), NodePath("../../QubitLines/@Node2D@5"), NodePath("../../QubitLines/_Node2D_4")]
+sprite = NodePath("Sprite2D")
+
+[node name="@Node2D@376" type="Node2D" parent="Gates" node_paths=PackedStringArray("qubit_lines", "sprite") instance=ExtResource("2_2dwi3")]
+position = Vector2(640, 512)
+script = ExtResource("3_jqcmc")
+conditions = Array[Dictionary]([{
+"height": -4,
+"inverted": false,
+"line_idx": 4
+}, {
+"height": 2,
+"inverted": false,
+"line_idx": 6
+}, {
+"height": 3,
+"inverted": true,
+"line_idx": 7
+}])
+qubit_lines = [NodePath("../../QubitLines/@Node2D@9"), NodePath("../../QubitLines/@Node2D@8"), NodePath("../../QubitLines/@Node2D@7"), NodePath("../../QubitLines/@Node2D@6"), NodePath("../../QubitLines/@Node2D@5"), NodePath("../../QubitLines/@Node2D@10"), NodePath("../../QubitLines/@Node2D@11"), NodePath("../../QubitLines/@Node2D@12")]
+sprite = NodePath("Sprite2D")
+
+[node name="@Node2D@427" type="Node2D" parent="Gates" node_paths=PackedStringArray("qubit_lines", "sprite") instance=ExtResource("2_2dwi3")]
+position = Vector2(704, 576)
+script = ExtResource("3_jqcmc")
+conditions = Array[Dictionary]([{
+"height": 1,
+"inverted": false,
+"line_idx": 2
+}, {
+"height": 2,
+"inverted": true,
+"line_idx": 3
+}, {
+"height": -4,
+"inverted": false,
+"line_idx": 6
+}])
+qubit_lines = [NodePath("../../QubitLines/@Node2D@10"), NodePath("../../QubitLines/@Node2D@9"), NodePath("../../QubitLines/@Node2D@11"), NodePath("../../QubitLines/@Node2D@12"), NodePath("../../QubitLines/@Node2D@8"), NodePath("../../QubitLines/@Node2D@7"), NodePath("../../QubitLines/@Node2D@6")]
+sprite = NodePath("Sprite2D")
+
+[node name="@Node2D@464" type="Node2D" parent="Gates" node_paths=PackedStringArray("qubit_lines", "sprite") instance=ExtResource("2_2dwi3")]
+position = Vector2(768, 512)
+script = ExtResource("3_jqcmc")
+conditions = Array[Dictionary]([{
+"height": -2,
+"inverted": false,
+"line_idx": 2
+}, {
+"height": 2,
+"inverted": true,
+"line_idx": 4
+}, {
+"height": 3,
+"inverted": true,
+"line_idx": 5
+}])
+qubit_lines = [NodePath("../../QubitLines/@Node2D@9"), NodePath("../../QubitLines/@Node2D@8"), NodePath("../../QubitLines/@Node2D@7"), NodePath("../../QubitLines/@Node2D@10"), NodePath("../../QubitLines/@Node2D@11"), NodePath("../../QubitLines/@Node2D@12")]
+sprite = NodePath("Sprite2D")
+
+[node name="@Node2D@491" type="Node2D" parent="Gates" node_paths=PackedStringArray("qubit_lines", "sprite") instance=ExtResource("2_2dwi3")]
+position = Vector2(832, 576)
+script = ExtResource("3_jqcmc")
+conditions = Array[Dictionary]([{
+"height": -2,
+"inverted": false,
+"line_idx": 2
+}, {
+"height": 1,
+"inverted": true,
+"line_idx": 3
+}, {
+"height": 2,
+"inverted": true,
+"line_idx": 4
+}])
+qubit_lines = [NodePath("../../QubitLines/@Node2D@10"), NodePath("../../QubitLines/@Node2D@9"), NodePath("../../QubitLines/@Node2D@8"), NodePath("../../QubitLines/@Node2D@11"), NodePath("../../QubitLines/@Node2D@12")]
+sprite = NodePath("Sprite2D")
+
+[node name="@Node2D@87" type="Node2D" parent="Gates" node_paths=PackedStringArray("qubit_lines", "sprite") instance=ExtResource("2_2dwi3")]
+position = Vector2(896, 768)
+script = ExtResource("3_jqcmc")
+conditions = Array[Dictionary]([{
+"height": -3,
+"inverted": true,
+"line_idx": 3
+}, {
+"height": -4,
+"inverted": true,
+"line_idx": 4
+}])
+qubit_lines = [NodePath("../../QubitLines/@Node2D@13"), NodePath("../../QubitLines/@Node2D@12"), NodePath("../../QubitLines/@Node2D@11"), NodePath("../../QubitLines/@Node2D@10"), NodePath("../../QubitLines/@Node2D@9")]
+sprite = NodePath("Sprite2D")
+
+[node name="H" type="Node2D" parent="Gates" node_paths=PackedStringArray("qubit_lines", "sprite") instance=ExtResource("4_i0qxr")]
+position = Vector2(960, 640)
+script = ExtResource("5_hqajl")
+qubit_lines = [NodePath("../../QubitLines/@Node2D@11")]
+sprite = NodePath("Sprite2D")
+
+[node name="@Node2D@115" type="Node2D" parent="Gates" node_paths=PackedStringArray("qubit_lines", "sprite") instance=ExtResource("4_i0qxr")]
+position = Vector2(960, 704)
+script = ExtResource("5_hqajl")
+qubit_lines = [NodePath("../../QubitLines/@Node2D@12")]
+sprite = NodePath("Sprite2D")
+
+[node name="@Node2D@116" type="Node2D" parent="Gates" node_paths=PackedStringArray("qubit_lines", "sprite") instance=ExtResource("2_2dwi3")]
+position = Vector2(1024, 768)
+script = ExtResource("3_jqcmc")
+conditions = Array[Dictionary]([{
+"height": -1,
+"inverted": true,
+"line_idx": 1
+}, {
+"height": -2,
+"inverted": true,
+"line_idx": 2
+}])
+qubit_lines = [NodePath("../../QubitLines/@Node2D@13"), NodePath("../../QubitLines/@Node2D@12"), NodePath("../../QubitLines/@Node2D@11")]
+sprite = NodePath("Sprite2D")
+
+[node name="@Node2D@121" type="Node2D" parent="Gates" node_paths=PackedStringArray("qubit_lines", "sprite") instance=ExtResource("4_i0qxr")]
+position = Vector2(1088, 640)
+script = ExtResource("5_hqajl")
+qubit_lines = [NodePath("../../QubitLines/@Node2D@11")]
+sprite = NodePath("Sprite2D")
+
+[node name="@Node2D@122" type="Node2D" parent="Gates" node_paths=PackedStringArray("qubit_lines", "sprite") instance=ExtResource("4_i0qxr")]
+position = Vector2(1088, 704)
+script = ExtResource("5_hqajl")
+qubit_lines = [NodePath("../../QubitLines/@Node2D@12")]
+sprite = NodePath("Sprite2D")
+
+[node name="Observer" type="Node2D" parent="Gates" node_paths=PackedStringArray("qubit_lines", "sprite") instance=ExtResource("6_1d1jh")]
+position = Vector2(1216, 704)
+script = ExtResource("7_jlyrw")
+qubit_lines = [NodePath("../../QubitLines/@Node2D@12")]
+sprite = NodePath("Sprite2D")
+
+[node name="@Node2D@97" type="Node2D" parent="Gates" node_paths=PackedStringArray("qubit_lines", "sprite") instance=ExtResource("6_1d1jh")]
+position = Vector2(1216, 640)
+script = ExtResource("7_jlyrw")
+qubit_lines = [NodePath("../../QubitLines/@Node2D@11")]
+sprite = NodePath("Sprite2D")
+
+[node name="@Node2D@98" type="Node2D" parent="Gates" node_paths=PackedStringArray("qubit_lines", "sprite") instance=ExtResource("6_1d1jh")]
+position = Vector2(1216, 384)
+script = ExtResource("7_jlyrw")
+qubit_lines = [NodePath("../../QubitLines/@Node2D@7")]
+sprite = NodePath("Sprite2D")
+
+[node name="@Node2D@99" type="Node2D" parent="Gates" node_paths=PackedStringArray("qubit_lines", "sprite") instance=ExtResource("6_1d1jh")]
+position = Vector2(1216, 320)
+script = ExtResource("7_jlyrw")
+qubit_lines = [NodePath("../../QubitLines/@Node2D@6")]
+sprite = NodePath("Sprite2D")
+
+[node name="@Node2D@100" type="Node2D" parent="Gates" node_paths=PackedStringArray("qubit_lines", "sprite") instance=ExtResource("6_1d1jh")]
+position = Vector2(1216, 192)
+script = ExtResource("7_jlyrw")
+qubit_lines = [NodePath("../../QubitLines/_Node2D_4")]
+sprite = NodePath("Sprite2D")
+
+[node name="@Node2D@101" type="Node2D" parent="Gates" node_paths=PackedStringArray("qubit_lines", "sprite") instance=ExtResource("6_1d1jh")]
+position = Vector2(1216, 256)
+script = ExtResource("7_jlyrw")
+qubit_lines = [NodePath("../../QubitLines/@Node2D@5")]
+sprite = NodePath("Sprite2D")
+
+[node name="@Node2D@102" type="Node2D" parent="Gates" node_paths=PackedStringArray("qubit_lines", "sprite") instance=ExtResource("6_1d1jh")]
+position = Vector2(1216, 128)
+script = ExtResource("7_jlyrw")
+qubit_lines = [NodePath("../../QubitLines/_Node2D_3")]
+sprite = NodePath("Sprite2D")
+
+[node name="@Node2D@103" type="Node2D" parent="Gates" node_paths=PackedStringArray("qubit_lines", "sprite") instance=ExtResource("6_1d1jh")]
+position = Vector2(1216, 64)
+script = ExtResource("7_jlyrw")
+qubit_lines = [NodePath("../../QubitLines/@Node2D@2")]
+sprite = NodePath("Sprite2D")
+
+[node name="@Node2D@104" type="Node2D" parent="Gates" node_paths=PackedStringArray("qubit_lines", "sprite") instance=ExtResource("6_1d1jh")]
+position = Vector2(1216, 0)
+script = ExtResource("7_jlyrw")
+qubit_lines = [NodePath("../../QubitLines/QubitLine")]
+sprite = NodePath("Sprite2D")
+
+[node name="Information" type="Node2D" parent="Gates" node_paths=PackedStringArray("alpha", "beta", "qubit_lines", "sprite") instance=ExtResource("8_fltjv")]
+position = Vector2(1216, 768)
+script = ExtResource("9_qyy82")
+alpha = NodePath("Sprite2D/Alpha")
+beta = NodePath("Sprite2D/Beta")
+qubit_lines = [NodePath("../../QubitLines/@Node2D@13")]
+sprite = NodePath("Sprite2D")
+
+[node name="@Node2D@97" type="Node2D" parent="Gates" node_paths=PackedStringArray("qubit_lines", "sprite") instance=ExtResource("6_1d1jh")]
+position = Vector2(1216, 448)
+script = ExtResource("7_jlyrw")
+qubit_lines = [NodePath("../../QubitLines/@Node2D@8")]
+sprite = NodePath("Sprite2D")
+
+[node name="@Node2D@98" type="Node2D" parent="Gates" node_paths=PackedStringArray("qubit_lines", "sprite") instance=ExtResource("6_1d1jh")]
+position = Vector2(1216, 512)
+script = ExtResource("7_jlyrw")
+qubit_lines = [NodePath("../../QubitLines/@Node2D@9")]
+sprite = NodePath("Sprite2D")
+
+[node name="@Node2D@99" type="Node2D" parent="Gates" node_paths=PackedStringArray("qubit_lines", "sprite") instance=ExtResource("6_1d1jh")]
+position = Vector2(1216, 576)
+script = ExtResource("7_jlyrw")
+qubit_lines = [NodePath("../../QubitLines/@Node2D@10")]
+sprite = NodePath("Sprite2D")
+
+[node name="QubitLines" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="QubitLine" type="Node2D" parent="QubitLines" node_paths=PackedStringArray("gates", "sprite") instance=ExtResource("2_8kemr")]
+position = Vector2(320, 0)
+script = ExtResource("7_iuk3t")
+gates = [NodePath("../../Gates/CNOT"), NodePath("../../Gates/@Node2D@104")]
+sprite = NodePath("Sprite")
+
+[node name="@Node2D@2" type="Node2D" parent="QubitLines" node_paths=PackedStringArray("gates", "sprite") instance=ExtResource("2_8kemr")]
+position = Vector2(320, 64)
+script = ExtResource("7_iuk3t")
+gates = [NodePath("../../Gates/CNOT"), NodePath("../../Gates/@Node2D@127"), NodePath("../../Gates/@Node2D@103")]
+sprite = NodePath("Sprite")
+
+[node name="_Node2D_3" type="Node2D" parent="QubitLines" node_paths=PackedStringArray("gates", "sprite") instance=ExtResource("2_8kemr")]
+position = Vector2(320, 128)
+script = ExtResource("7_iuk3t")
+gates = [NodePath("../../Gates/CNOT"), NodePath("../../Gates/@Node2D@127"), NodePath("../../Gates/@Node2D@228"), NodePath("../../Gates/@Node2D@102")]
+sprite = NodePath("Sprite")
+
+[node name="_Node2D_4" type="Node2D" parent="QubitLines" node_paths=PackedStringArray("gates", "sprite") instance=ExtResource("2_8kemr")]
+position = Vector2(320, 192)
+script = ExtResource("7_iuk3t")
+gates = [NodePath("../../Gates/CNOT"), NodePath("../../Gates/@Node2D@127"), NodePath("../../Gates/@Node2D@228"), NodePath("../../Gates/@Node2D@311"), NodePath("../../Gates/@Node2D@100")]
+sprite = NodePath("Sprite")
+
+[node name="@Node2D@5" type="Node2D" parent="QubitLines" node_paths=PackedStringArray("gates", "sprite") instance=ExtResource("2_8kemr")]
+position = Vector2(320, 256)
+script = ExtResource("7_iuk3t")
+gates = [NodePath("../../Gates/CNOT"), NodePath("../../Gates/@Node2D@127"), NodePath("../../Gates/@Node2D@228"), NodePath("../../Gates/@Node2D@311"), NodePath("../../Gates/@Node2D@376"), NodePath("../../Gates/@Node2D@101")]
+sprite = NodePath("Sprite")
+
+[node name="@Node2D@6" type="Node2D" parent="QubitLines" node_paths=PackedStringArray("gates", "sprite") instance=ExtResource("2_8kemr")]
+position = Vector2(320, 320)
+script = ExtResource("7_iuk3t")
+gates = [NodePath("../../Gates/CNOT"), NodePath("../../Gates/@Node2D@127"), NodePath("../../Gates/@Node2D@228"), NodePath("../../Gates/@Node2D@311"), NodePath("../../Gates/@Node2D@376"), NodePath("../../Gates/@Node2D@427"), NodePath("../../Gates/@Node2D@99")]
+sprite = NodePath("Sprite")
+
+[node name="@Node2D@7" type="Node2D" parent="QubitLines" node_paths=PackedStringArray("gates", "sprite") instance=ExtResource("2_8kemr")]
+position = Vector2(320, 384)
+script = ExtResource("7_iuk3t")
+gates = [NodePath("../../Gates/CNOT"), NodePath("../../Gates/@Node2D@127"), NodePath("../../Gates/@Node2D@228"), NodePath("../../Gates/@Node2D@311"), NodePath("../../Gates/@Node2D@376"), NodePath("../../Gates/@Node2D@427"), NodePath("../../Gates/@Node2D@464"), NodePath("../../Gates/@Node2D@98")]
+sprite = NodePath("Sprite")
+
+[node name="@Node2D@8" type="Node2D" parent="QubitLines" node_paths=PackedStringArray("gates", "sprite") instance=ExtResource("2_8kemr")]
+position = Vector2(320, 448)
+script = ExtResource("7_iuk3t")
+gates = [NodePath("../../Gates/CNOT"), NodePath("../../Gates/@Node2D@127"), NodePath("../../Gates/@Node2D@228"), NodePath("../../Gates/@Node2D@311"), NodePath("../../Gates/@Node2D@376"), NodePath("../../Gates/@Node2D@427"), NodePath("../../Gates/@Node2D@464"), NodePath("../../Gates/@Node2D@491"), NodePath("../../Gates/@Node2D@97"), NodePath("../../Gates/@Node2D@99")]
+sprite = NodePath("Sprite")
+
+[node name="@Node2D@9" type="Node2D" parent="QubitLines" node_paths=PackedStringArray("gates", "sprite") instance=ExtResource("2_8kemr")]
+position = Vector2(320, 512)
+script = ExtResource("7_iuk3t")
+gates = [NodePath("../../Gates/CNOT"), NodePath("../../Gates/@Node2D@127"), NodePath("../../Gates/@Node2D@228"), NodePath("../../Gates/@Node2D@311"), NodePath("../../Gates/@Node2D@376"), NodePath("../../Gates/@Node2D@427"), NodePath("../../Gates/@Node2D@464"), NodePath("../../Gates/@Node2D@491"), NodePath("../../Gates/@Node2D@87"), NodePath("../../Gates/@Node2D@98"), NodePath("../../Gates/@Node2D@98")]
+sprite = NodePath("Sprite")
+
+[node name="@Node2D@10" type="Node2D" parent="QubitLines" node_paths=PackedStringArray("gates", "sprite") instance=ExtResource("2_8kemr")]
+position = Vector2(320, 576)
+script = ExtResource("7_iuk3t")
+gates = [NodePath("../../Gates/CNOT"), NodePath("../../Gates/@Node2D@127"), NodePath("../../Gates/@Node2D@228"), NodePath("../../Gates/@Node2D@311"), NodePath("../../Gates/@Node2D@376"), NodePath("../../Gates/@Node2D@427"), NodePath("../../Gates/@Node2D@464"), NodePath("../../Gates/@Node2D@491"), NodePath("../../Gates/@Node2D@87"), NodePath("../../Gates/@Node2D@99"), NodePath("../../Gates/@Node2D@97")]
+sprite = NodePath("Sprite")
+
+[node name="@Node2D@11" type="Node2D" parent="QubitLines" node_paths=PackedStringArray("gates", "sprite") instance=ExtResource("2_8kemr")]
+position = Vector2(320, 640)
+script = ExtResource("7_iuk3t")
+gates = [NodePath("../../Gates/CNOT"), NodePath("../../Gates/@Node2D@127"), NodePath("../../Gates/@Node2D@228"), NodePath("../../Gates/@Node2D@311"), NodePath("../../Gates/@Node2D@376"), NodePath("../../Gates/@Node2D@427"), NodePath("../../Gates/@Node2D@464"), NodePath("../../Gates/@Node2D@491"), NodePath("../../Gates/@Node2D@87"), NodePath("../../Gates/H"), NodePath("../../Gates/@Node2D@116"), NodePath("../../Gates/@Node2D@121"), NodePath("../../Gates/@Node2D@97"), NodePath("../../Gates/@Node2D@97")]
+sprite = NodePath("Sprite")
+
+[node name="@Node2D@12" type="Node2D" parent="QubitLines" node_paths=PackedStringArray("gates", "sprite") instance=ExtResource("2_8kemr")]
+position = Vector2(320, 704)
+script = ExtResource("7_iuk3t")
+gates = [NodePath("../../Gates/CNOT"), NodePath("../../Gates/@Node2D@127"), NodePath("../../Gates/@Node2D@228"), NodePath("../../Gates/@Node2D@311"), NodePath("../../Gates/@Node2D@376"), NodePath("../../Gates/@Node2D@427"), NodePath("../../Gates/@Node2D@464"), NodePath("../../Gates/@Node2D@491"), NodePath("../../Gates/@Node2D@87"), NodePath("../../Gates/@Node2D@115"), NodePath("../../Gates/@Node2D@116"), NodePath("../../Gates/@Node2D@122"), NodePath("../../Gates/Observer")]
+sprite = NodePath("Sprite")
+
+[node name="@Node2D@13" type="Node2D" parent="QubitLines" node_paths=PackedStringArray("gates", "sprite") instance=ExtResource("2_8kemr")]
+position = Vector2(320, 768)
+script = ExtResource("7_iuk3t")
+gates = [NodePath("../../Gates/@Node2D@87"), NodePath("../../Gates/@Node2D@116"), NodePath("../../Gates/Information")]
+sprite = NodePath("Sprite")

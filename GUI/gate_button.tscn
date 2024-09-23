@@ -1,14 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6kcqj26jmg6v"]
+[gd_scene load_steps=2 format=3 uid="uid://b6kcqj26jmg6v"]
 
-[ext_resource type="Texture2D" uid="uid://d27jdqhtl42ga" path="res://icon.svg" id="1_mynnw"]
 [ext_resource type="Script" path="res://GUI/gate_button.gd" id="2_e7gsy"]
 
 [node name="GateButton" type="Button"]
+custom_minimum_size = Vector2(100, 0)
 offset_left = 5.0
 offset_top = 5.0
 offset_right = 141.0
 offset_bottom = 141.0
-icon = ExtResource("1_mynnw")
 script = ExtResource("2_e7gsy")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]
